@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Latin Music 1940s - 1980s</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Alegreya+Sans&family=Merriweather&family=Merriweather+Sans&family=Nunito&family=Nunito+Sans&family=Quattrocento&family=Quattrocento+Sans&family=Roboto&family=Roboto+Mono&family=Roboto+Slab&display=swap" rel="stylesheet">
+<style>
+
+.center {
+  margin: auto;
+  width: 40%;
+}
+
+.title {
+  font-weight: 800;
+  line-height: 1.5;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+.main_box{
+    height: 80vh;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    margin-right: 5vh;
+    margin-left: 5vh;
+    display: block;
+    background-color: white;
+    border-radius: 20px;
+    padding: 1em;
+    width: auto;
+    box-shadow: 0px 0px 10px -4px grey;
+    text-align: center;
+}
+
+    #song_name{
+        width: 70%;
+        padding: 1em;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid grey;
+    }
+    #submission_button{
+        width: 25%;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 5px;
+        color: white;
+        background-color:dodgerblue;
+        border-style: none;
+    }
+
+}
+</style>
+
+
+</head>
+
+<body>
+
+  <div class="main_box">
+        <h1 class="title"> Latin American Music: 1940s to 1980s </h1>
+        <p class="title"> A Recommendation System for navigating the collections in SU Library </p>
+        <form action="{{ url_for('main') }}" method="POST">
+            <input type="text" id="song_name" name="song_name" placeholder="Enter A Song Name (on Side A) in Collection" required />
+            <input type="submit" id="submission_button" value="Submit"/>
+        </form>
+
+        <br>
+
+        <p class = "title"> Here Are Some Song Names Examples: </p>
+
+        <ul class="list-group center" style="width: 25%;">
+          <li class="list-group-item">De Puerto En Puerto</li>
+          <li class="list-group-item">Nacio Nazareno</li>
+          <li class="list-group-item">Cuatro Cirios</li>
+          <li class="list-group-item">El Clavito</li>
+          <li class="list-group-item">Jilguerito Herido</li>
+        </ul>
+
+        <br>
+
+        <p style="color: #919191; padding: 1em;">The system uses <b>Content Based Recommendations</b>: recommend similar items based on their Record Label, Genre, and other relevant information.</p>
+
+</html>
