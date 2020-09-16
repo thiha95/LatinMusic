@@ -1,11 +1,11 @@
 # load packages
 
-import flask
+from flask import Flask, request, render_template, redirect, url_for
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 
-app = flask.Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates')
 
 data = pd.read_csv("music_df.csv")
 
@@ -28,7 +28,9 @@ indices = pd.Series(data['side_a'])
 # this function takes in a movie title as input and returns the top 10 recommended (similar) titles
 
 def recommend(side_a, cosine_sim = cosine_sim):
-    recommended_record = []
+    song_a = []
+    ids = []
+    song_b = []
     genre_a = []
     genre_b = []
     label = []
@@ -41,7 +43,13 @@ def recommend(side_a, cosine_sim = cosine_sim):
     # [1:11] to exclude 0 (index 0 is the input movie itself)
 
     for i in top_10_indices:   # to append the titles of top 10 similar movies to the recommended_movies list
-        recommended_record.append(list(data['Title'])[i])
+        ids.append(list(data['Original ID'])[i])
+
+    for i in top_10_indices:   # to append the titles of top 10 similar movies to the recommended_movies list
+        song_a.append(list(data['side_a'])[i])
+
+    for i in top_10_indices:   # to append the titles of top 10 similar movies to the recommended_movies list
+        song_b.append(list(data['side_b'])[i])
 
     for i in top_10_indices:   # to append the titles of top 10 similar movies to the recommended_movies list
         genre_a.append(list(data['Catalyst Music Genre Side A'])[i])
@@ -52,24 +60,48 @@ def recommend(side_a, cosine_sim = cosine_sim):
     for i in top_10_indices:   # to append the titles of top 10 similar movies to the recommended_movies list
         label.append(list(data['Label Name'])[i])
 
-    return recommended_record, genre_a, genre_b, label
+    return song_a, song_b, genre_a, genre_b, label, ids
 
 
 # Set up the main route
+
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    if flask.request.method == 'GET':
-        return(flask.render_template('home.html'))
+    if request.method == 'GET':
+        return(render_template('home.html'))
 
-    if flask.request.method == 'POST':
-        s_name = flask.request.form['song_name']
-#        check = difflib.get_close_matches(m_name,all_titles,cutout=0.50,n=1)
+    if request.method == 'POST':
+        s_name = request.form['song_name']
         if s_name not in list(indices):
-            return(flask.render_template('error.html'))
+            return redirect(url_for('display_error'))
         else:
-            recommended_record, genre_a, genre_b, label = recommend(s_name)
+            s_name = request.form['song_name']
+            song_a, song_b, genre_a, genre_b, label, ids = recommend(s_name)
+            return render_template('result.html',song_names=song_a,song_b = song_b, a=genre_a,b = genre_b, label = label, search_name=s_name, id = ids)
 
-            return flask.render_template('result.html',song_names=recommended_record,a=genre_a,b = genre_b, label = label, search_name=s_name)
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    if request.method == 'GET':
+        return(render_template('home.html'))
+
+    if request.method == 'POST':
+        s_name = request.form['song_name']
+        if s_name not in list(indices):
+            return redirect(url_for('display_error'))
+        else:
+            s_name = request.form['song_name']
+            song_a, song_b, genre_a, genre_b, label, ids = recommend(s_name)
+            return render_template('result.html',song_names=song_a,song_b = song_b, a=genre_a,b = genre_b, label = label, search_name=s_name, id = ids)
+
+@app.route('/error', methods=['GET', 'POST'])
+def display_error():
+    return render_template('error.html')
+
+@app.route('/viz', methods=['GET', 'POST'])
+def display_vizualization():
+    return render_template('viz.html')
+
 
 if __name__ == '__main__':
     app.run()
