@@ -20,8 +20,8 @@
 }
 
 .main_box{
-    height: 80vh;
-    margin-top: 15vh;
+    height: 90vh;
+    margin-top: 5vh;
     margin-bottom: 15vh;
     margin-right: 5vh;
     margin-left: 5vh;
@@ -51,17 +51,39 @@
         border-style: none;
     }
 
+
+img {
+    width: 15%;
+    height: 15%;
+  }
+
 }
+
+
 </style>
+
 
 
 </head>
 
 <body>
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed top">
+    <a class="navbar-brand" href="/">LA45 COLLECTION</a>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/"> <i class="fas fa-code"></i> Recommender</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/viz"> <i class="fas fa-pen-nib"></i> Visualization</a>
+        </li>
+      </ul>
+  </nav>
+
   <div class="main_box">
-        <h1 class="title"> Latin American Music: 1940s to 1980s </h1>
-        <p class="title"> A Recommendation System for navigating the collections in SU Library </p>
+        <h1 class="title"> LA45 Recommender</h1>
+        <p class="title"> A Recommendation System for navigating the Latin American Music Collection in SU Library</h1>
+        <br>
         <form action="{{ url_for('main') }}" method="POST">
             <input type="text" id="song_name" name="song_name" placeholder="Enter A Song Name (on Side A) in Collection" required />
             <input type="submit" id="submission_button" value="Submit"/>
@@ -69,8 +91,7 @@
 
         <br>
 
-        <p class = "title"> Here Are Some Song Names Examples: </p>
-
+        <p class = "title"> Here Are Some Examples: </p>
         <ul class="list-group center" style="width: 25%;">
           <li class="list-group-item">De Puerto En Puerto</li>
           <li class="list-group-item">Cataclismo</li>
@@ -78,9 +99,8 @@
           <li class="list-group-item">El Clavito</li>
           <li class="list-group-item">Jilguerito Herido</li>
         </ul>
-
         <br>
 
         <p style="color: #919191; padding: 1em;">The system uses <b>Content Based Recommendations</b>: recommend similar items based on their Record Label, Genre, and other relevant information.</p>
-
+        <img src="{{url_for('static', filename='LA45.jpg')}}" align="middle" class="img-thumbnail"/>
 </html>

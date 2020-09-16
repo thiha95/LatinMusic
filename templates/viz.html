@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Latin Music 1940s - 1980s</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Alegreya+Sans&family=Merriweather&family=Merriweather+Sans&family=Nunito&family=Nunito+Sans&family=Quattrocento&family=Quattrocento+Sans&family=Roboto&family=Roboto+Mono&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed top">
+      <a class="navbar-brand" href="/">LA45 COLLECTION</a>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"> <i class="fas fa-code"></i> Recommender</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/home"> <i class="fas fa-pen-nib"></i> Visualization</a>
+          </li>
+        </ul>
+    </nav>
+
+    <br>
+
+    <div class="container">
+      <div class="jumbotron">
+
+        <h1>  Welcome</h1>
+        <p>Here are some visualizations of the LA45 Collection</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <div class="thumbnail">
+          <a href="{{url_for('static', filename='artistLabel.jpeg')}}" target="_blank">
+            <img src="{{url_for('static', filename='artistLabel.jpeg')}}" class="img-thumbnail">
+            <div class="caption">
+              <p> Artist vs Record Label</p>
+            </div>
+          </a>
+        </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="thumbnail">
+          <a href="{{url_for('static', filename='genreCom.jpeg')}}" target="_blank">
+            <img src="{{url_for('static', filename='genreCom.jpeg')}}" class="img-thumbnail">
+            <div class="caption">
+              <p> Major Genres</p>
+            </div>
+          </a>
+        </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <div class="thumbnail">
+          <a href="{{url_for('static', filename='genreLabel.jpeg')}}" target="_blank">
+            <img src="{{url_for('static', filename='genreLabel.jpeg')}}" class="img-thumbnail">
+            <div class="caption">
+              <p> Genre vs Record Label</p>
+            </div>
+          </a>
+        </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="thumbnail">
+          <a href="{{url_for('static', filename='artistGenre.jpeg')}}" target="_blank">
+            <img src="{{url_for('static', filename='artistGenre.jpeg')}}" class="img-thumbnail">
+            <div class="caption">
+              <p> Artist vs Genre</p>
+            </div>
+          </a>
+        </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </body>
+</html>

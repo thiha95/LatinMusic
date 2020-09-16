@@ -9,8 +9,8 @@
 
   <style>
     .main_box{
-            height: 100vh;
-            margin-top: 15vh;
+            height: 90vh;
+            margin-top: 10vh;
             margin-bottom: 15vh;
             margin-right: 5vh;
             margin-left: 5vh;
@@ -34,80 +34,121 @@
 
   <body>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed top">
+      <a class="navbar-brand" href="/">LA45 COLLECTION</a>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"> <i class="fas fa-code"></i> Recommender</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/viz"> <i class="fas fa-pen-nib"></i> Visualization</a>
+          </li>
+        </ul>
+    </nav>
 
     <div class="main_box">
-            <h2 class="title"> Recommendations: Similar Songs </h2>
+            <h2 class="title"> Recommendation: Ten Most Similar Items </h2>
+            <br>
             <p>Showing results for: <b>{{ search_name }} </b> </p>
-            <table class="table" align="center">
+            <br>
+            <table class="table table-hover" style="text-align:left; width: 80%; margin-left: 10%; margin-right: 10%">
                 <tr>
-                    <th>Record Title</th>
-                    <th>Genre of Side A</th>
-                    <th>Genre of Side B</th>
-                    <th>Record Label</th>
+                    <th scope="col">Original ID </th>
+                    <th scope="col">Song (A) </th>
+                    <th scope="col">Song (B) </th>
+                    <th scope="col">Genre (A)</th>
+                    <th scope="col">Genre (B)</th>
+                    <th scope="col">Record Label</th>
                 </tr>
                 <tbody >
                     <tr>
+                        <td>{{ id[0] }}</td>
                         <td>{{ song_names[0] }}</td>
+                        <td>{{ song_b[0] }}</td>
                         <td>{{ a[0] }}</td>
                         <td>{{ b[0] }}</td>
                         <td>{{ label[0] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[1] }}</td>
                         <td>{{ song_names[1] }}</td>
+                        <td>{{ song_b[1] }}</td>
                         <td>{{ a[1] }}</td>
                         <td>{{ b[1] }}</td>
                         <td>{{ label[1] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[2] }}</td>
                         <td>{{ song_names[2] }}</td>
+                        <td>{{ song_b[2] }}</td>
                         <td>{{ a[2] }}</td>
                         <td>{{ b[2] }}</td>
                         <td>{{ label[2] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[3] }}</td>
                         <td>{{ song_names[3] }}</td>
+                        <td>{{ song_b[3] }}</td>
                         <td>{{ a[3] }}</td>
                         <td>{{ b[3] }}</td>
                         <td>{{ label[3] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[4] }}</td>
                         <td>{{ song_names[4] }}</td>
+                        <td>{{ song_b[4] }}</td>
                         <td>{{ a[4] }}</td>
                         <td>{{ b[4] }}</td>
                         <td>{{ label[4] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[5] }}</td>
                         <td>{{ song_names[5] }}</td>
+                        <td>{{ song_b[5] }}</td>
                         <td>{{ a[5] }}</td>
                         <td>{{ b[5] }}</td>
                         <td>{{ label[5] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[6] }}</td>
                         <td>{{ song_names[6] }}</td>
+                        <td>{{ song_b[6] }}</td>
                         <td>{{ a[6] }}</td>
                         <td>{{ b[6] }}</td>
                         <td>{{ label[6] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[7] }}</td>
                         <td>{{ song_names[7] }}</td>
+                        <td>{{ song_b[7] }}</td>
                         <td>{{ a[7] }}</td>
                         <td>{{ b[7] }}</td>
                         <td>{{ label[7] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[8] }}</td>
                         <td>{{ song_names[8] }}</td>
+                        <td>{{ song_b[8] }}</td>
                         <td>{{ a[8] }}</td>
                         <td>{{ b[8] }}</td>
                         <td>{{ label[8] }}</td>
                     </tr>
                     <tr>
+                        <td>{{ id[9] }}</td>
                         <td>{{ song_names[9] }}</td>
+                        <td>{{ song_b[9] }}</td>
                         <td>{{ a[9] }}</td>
                         <td>{{ b[9] }}</td>
                         <td>{{ label[9] }}</td>
                     </tr>
                 </tbody>
             </table>
+
+            <form action="{{ url_for('home') }}" method="GET">
+                <button type="submit" class="btn btn-primary"> Home </button>
+            </form>
+
+
 
 
 

@@ -34,15 +34,43 @@
       text-align: center;
   }
 
+  img {
+      width: 40%;
+      height: 40%;
+  }
 
   }
   </style>
   </head>
   <body>
 
-    <div class="main_box">
-        <h1 class="title"> Sorry, Your Search Does Not Match Any Items in Our Database </h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed top">
+      <a class="navbar-brand" href="/">LA45 COLLECTION</a>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"> <i class="fas fa-code"></i> Recommender</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/viz"> <i class="fas fa-pen-nib"></i> Visualization</a>
+          </li>
+        </ul>
+    </nav>
 
+    <div class="main_box">
+        <h2 class="title"> Sorry, Your Search Does Not Match Any Items in Our Database </h2>
+        <br>
+        <p class="title"> You can find the full list of records in <a href="https://library.syr.edu/scrc/">SCRC online </a>
+        <br>
+        <br>
+        <div>
+          <img src="{{url_for('static', filename='notFound.jpg')}}" align="middle" class="img-thumbnail"/>
+        </div>
+
+        <br>
+
+        <form action="{{ url_for('home') }}" method="GET">
+            <button type="submit" class="btn btn-primary"> Home </button>
+        </form>
     </form>
     </div>
 
